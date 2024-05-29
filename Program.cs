@@ -8,14 +8,10 @@ namespace Spotivy
             User user = new User("player");
 
             List<User> users = user.initUsers();
-
-            foreach (User username in users)
+         /*   foreach (User username in users)
             {
-                
-                   Console.WriteLine(username.UserName);
-                
-
-            }
+                Console.WriteLine(username.UserName);
+            }*/
         }
     }
 }
