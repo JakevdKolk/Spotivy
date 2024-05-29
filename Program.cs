@@ -8,8 +8,9 @@ namespace Spotivy
             //Create head user
             User user = new User("player");
             //Create list of test users
+            
             List<User> users = user.initUsers();
-
+            users.Add(user);
             //loop trough all test users.
          /*   foreach (User username in users)
             {
