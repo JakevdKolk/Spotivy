@@ -53,12 +53,14 @@ namespace Spotivy.Users
                    .Where(user => user.UserName.ToLower().StartsWith(userName.ToLower(), StringComparison.OrdinalIgnoreCase))
                    .ToList();
             // check if count is above 1
-            if(foundUsers.Count() > 0) { 
+            if(foundUsers.Count() > 0) {
                 // check if count is 2 or higher
                 if (foundUsers.Count() >= 2)
                 {
                     foundUsers = selectMultipleUser(foundUsers);
                 }
+                Console.WriteLine("Found user " + foundUsers.First().UserName);
+
                 return foundUsers.First();
             }
             Console.WriteLine("error no user found try again");
