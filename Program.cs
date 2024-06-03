@@ -11,6 +11,10 @@ namespace Spotivy
             
             List<User> users = user.initUsers();
             users.Add(user);
+            Console.WriteLine("Search user");
+
+            user.searchUser(Console.ReadLine(),users );
+
             //loop trough all test users.
          /*   foreach (User username in users)
             {
