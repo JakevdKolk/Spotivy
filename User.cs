@@ -36,6 +36,26 @@ namespace Spotivy.Users
             //return the new users
             return users;
         }
+
+        public User searchUser(string userName, List<User> users)
+        {
+            
+
+            User foundUser = users.FirstOrDefault(user => user.UserName.ToLower() == userName.ToLower());
+
+
+            if (foundUser != null) {
+                Console.WriteLine(foundUser.UserName);
+                return foundUser;
+
+
+            }
+            else
+            {
+                Console.WriteLine("error no user found");
+                return null;
+            }
+        }
     
     }
 }
