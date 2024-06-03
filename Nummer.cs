@@ -1,27 +1,26 @@
 ﻿using System;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+
+public enum Genre
+{
+    blues,
+    jazz,
+    country,
+    metal
+}
 
 public class Nummer
 {
-    int id;
-    string name = "Nummer 1";
-    string artiest = "test";
-    double lengte = 4.35;
-    enum genre
+    private string name;
+    private string artiest = "test"; // Changed to private for consistency
+    private double lengte;
+    private Genre genre;
+
+    public Nummer(string name, double length, Genre genre)
     {
-        blues,
-        jazz,
-        country,
-        metal
-    }
-    public void getGenre()
-    {
-        genre nummer1 = genre.blues;
-        Console.WriteLine(nummer1);
+        this.name = name;
+        this.lengte = length;
+        this.genre = genre;
     }
 
-    public void getNaam()
-    {
-        Console.WriteLine(name);
-    }
+   
 }
