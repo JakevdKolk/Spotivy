@@ -93,7 +93,7 @@ namespace Spotivy.Users
                 return foundUsers;
             }
             Console.WriteLine("error try again");
-            return selectMultipleUser(foundUsers);
+            return selectMultipleUser(users);
         }
     
     }
