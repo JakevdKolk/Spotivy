@@ -95,6 +95,67 @@ namespace Spotivy.Users
             Console.WriteLine("error try again");
             return selectMultipleUser(users);
         }
+
+        //transform to list once number generation is done
+        public List<Nummer> searchNumberByName(List<Nummer> numbers) {
+            Console.WriteLine("Search a number by name: ");
+            string input = Console.ReadLine();
+            List<Nummer> foundNummers = numbers.Where(number => number.name.ToLower().StartsWith(input.ToLower(), StringComparison.OrdinalIgnoreCase)).ToList();
+            if (foundNummers.Count < 1)
+            {
+                Console.WriteLine("No Numbers found");
+                return searchNumberByName(numbers);
+            }
+
+            else if (foundNummers.Count > 1)
+            {
+                Console.WriteLine("Found Multiple Numbers please select one");
+                //return multiple method
+            }
+            return foundNummers;
+
+        }
+
+        public List<Nummer> searchNumberByGenre(List<Nummer> numbers)
+        {
+            Console.WriteLine("Search a number by genre: ");
+            string input = Console.ReadLine();
+            List<Nummer> foundNummers = numbers.Where(number => number.name.ToLower().StartsWith(input.ToLower(), StringComparison.OrdinalIgnoreCase)).ToList();
+            if(foundNummers.Count < 1)
+            {
+                Console.WriteLine("No Numbers found");
+                return searchNumberByGenre(numbers);
+            }
+
+            else if (foundNummers.Count > 1)
+            {
+                Console.WriteLine("Found Multiple Numbers please select one");
+                return selectMultipleNumbers(foundNummers);
+            }
+            return foundNummers;
+
+        }
+
+        private List<Nummer> selectMultipleNumbers(List<Nummer> numbers) {
+            Console.WriteLine("Multiple numbers found please select one");
+            // show all users
+            foreach (Nummer number in numbers)
+            {
+                Console.Write(number.name + " , ");
+            }
+            //user input for selected user
+            string input = Console.ReadLine();
+            // get all users that start with certain chars
+            List<Nummer> foundNummers = numbers.Where(number => number.name.ToLower().StartsWith(input.ToLower(), StringComparison.OrdinalIgnoreCase)).ToList();
+
+            //check if count is 1
+            if (foundNummers.Count() == 1)
+            {
+                return foundNummers;
+            }
+            Console.WriteLine("error try again");
+            return selectMultipleNumbers(numbers);
+        }
     
     }
 }

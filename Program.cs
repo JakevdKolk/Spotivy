@@ -16,7 +16,7 @@ namespace Spotivy
             Console.WriteLine("Search user");
 
             user.searchUser(Console.ReadLine(),users );
-
+            user.searchNumberByGenre();
             //loop trough all test users.
          /*   foreach (User username in users)
             {

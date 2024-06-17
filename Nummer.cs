@@ -5,13 +5,14 @@ public enum Genre
     blues,
     jazz,
     country,
-    metal
+    metal,
+    rock
 }
 
 public class Nummer
 {
-    private string name;
-    private string artiest = "test"; // Changed to private for consistency
+    public string name;
+    private string artiest = "test"; 
     private double lengte;
     private Genre genre;
 
