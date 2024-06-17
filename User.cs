@@ -106,7 +106,7 @@ namespace Spotivy.Users
             string input = Console.ReadLine();
             List<Nummer> foundNummers = numbers.Where(number => number.name.ToLower().StartsWith(input.ToLower(), StringComparison.OrdinalIgnoreCase)).ToList();
 
-            if (numbers.Count < 1)
+            if (foundNummers.Count < 1)
             {
                 Console.WriteLine("No numbers found please try again");
                 return searchNumberByName(numbers);
@@ -130,7 +130,7 @@ namespace Spotivy.Users
                    .ToLower().StartsWith(input.ToLower()))
                    .ToList();
 
-            if (numbers.Count < 1)
+            if (foundNummers.Count < 1)
             {
                 Console.WriteLine("No numbers found please try again");
                 return searchNumberByGenre(numbers);
@@ -145,7 +145,8 @@ namespace Spotivy.Users
          * Method that handles searching
          * */
         private List<Nummer> handleNumberSearching(List<Nummer> numbers)
-        { 
+        {
+            
             if (numbers.Count > 1)
             {
                 Console.WriteLine("Found Multiple Numbers please select one");
