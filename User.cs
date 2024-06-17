@@ -95,16 +95,32 @@ namespace Spotivy.Users
             return selectMultipleUser(users);
         }
 
-        //transform to list once number generation is done
+        /**      
+         * @List<Nummer> list of all nummers
+         * 
+         * Method that searches nummers by nummer name
+         * 
+         * */
         public List<Nummer> searchNumberByName(List<Nummer> numbers) {
             Console.WriteLine("Search a number by name: ");
             string input = Console.ReadLine();
             List<Nummer> foundNummers = numbers.Where(number => number.name.ToLower().StartsWith(input.ToLower(), StringComparison.OrdinalIgnoreCase)).ToList();
 
+            if (numbers.Count < 1)
+            {
+                Console.WriteLine("No numbers found please try again");
+                return searchNumberByName(numbers);
+            }
+
             return handleNumberSearching(foundNummers);
 
         }
 
+        /**
+         * @List<Nummer> list of all nummers
+         * 
+         * Method that searches nummers by nummer genre
+         **/ 
         public List<Nummer> searchNumberByGenre(List<Nummer> numbers)
         {
             Console.WriteLine("Search a number by genre: ");
@@ -113,13 +129,6 @@ namespace Spotivy.Users
                    .Where(number => Enum.GetName(typeof(Genre), number.genre)
                    .ToLower().StartsWith(input.ToLower()))
                    .ToList();
-            
-            return handleNumberSearching(foundNummers);
-
-        }
-
-        private List<Nummer> handleNumberSearching(List<Nummer> numbers)
-        {
 
             if (numbers.Count < 1)
             {
@@ -127,8 +136,17 @@ namespace Spotivy.Users
                 return searchNumberByGenre(numbers);
             }
 
+            return handleNumberSearching(foundNummers);
 
-            else if (numbers.Count > 1)
+        }
+        /**
+         * @List<Nummer> list of all found nummers
+         * 
+         * Method that handles searching
+         * */
+        private List<Nummer> handleNumberSearching(List<Nummer> numbers)
+        { 
+            if (numbers.Count > 1)
             {
                 Console.WriteLine("Found Multiple Numbers please select one");
                 return selectMultipleNumbers(numbers);
@@ -137,16 +155,21 @@ namespace Spotivy.Users
             return numbers;
         }
 
+        /**
+         * @List<Nummer> list of already filterted nummers
+         * 
+         * Method that gives you a choice between 2 nummers
+         * */
         private List<Nummer> selectMultipleNumbers(List<Nummer> numbers) {
             Console.WriteLine("Multiple numbers found please select one");
-            // show all users
+            // show all nummers
             foreach (Nummer number in numbers)
             {
                 Console.Write(number.name + " , ");
             }
-            //user input for selected user
+            //user input for selected nummer
             string input = Console.ReadLine();
-            // get all users that start with certain chars
+            // get all nummers that start with certain chars
             List<Nummer> foundNummers = numbers.Where(number => number.name.ToLower().StartsWith(input.ToLower(), StringComparison.OrdinalIgnoreCase)).ToList();
 
             //check if count is 1
