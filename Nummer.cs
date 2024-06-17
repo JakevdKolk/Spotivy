@@ -32,6 +32,7 @@ public class Nummer
     public List<Nummer> InitNumbers()
     {
         // Create list of song names
+        // Artiesten: Robert Johnson, Louis Armstrong, Johnny Cash, Linkin Park, Taylor Swift, Kanye West, Django Reinhart, Muddy Waters, Mozart, Katy Perry
         string[] names = new string[] { "Crossroad blues", "Moon river", "Ring of fire", "In the end", "Fortnight", "CARNIVAL", "Minor swing", "Manishboy", "Fur Elise", "Flowers" };
 
         // Create lengths corresponding to each song
