@@ -52,20 +52,19 @@ namespace Spotivy.Users
             List<User> foundUsers = users
                    .Where(user => user.UserName.ToLower().StartsWith(userName.ToLower(), StringComparison.OrdinalIgnoreCase))
                    .ToList();
-            // check if count is above 1
-            if(foundUsers.Count() > 0) {
-                // check if count is 2 or higher
-                if (foundUsers.Count() >= 2)
-                {
-                    foundUsers = selectMultipleUser(foundUsers);
-                }
-                Console.WriteLine("Found user " + foundUsers.First().UserName);
+            if(foundUsers.Count() < 1) {
+                Console.WriteLine("error no user found try again");
 
-                return foundUsers.First();
+                return searchUser(Console.ReadLine(), users);
             }
-            Console.WriteLine("error no user found try again");
-            return searchUser(Console.ReadLine(), users);
-            
+
+            if(foundUsers.Count() > 1) {
+
+                foundUsers = selectMultipleUser(foundUsers);
+
+            }
+            return foundUsers.First();
+                     
         }
 
         /**
@@ -94,6 +93,94 @@ namespace Spotivy.Users
             }
             Console.WriteLine("error try again");
             return selectMultipleUser(users);
+        }
+
+        /**      
+         * @List<Nummer> list of all nummers
+         * 
+         * Method that searches nummers by nummer name
+         * 
+         * */
+        public List<Nummer> searchNumberByName(List<Nummer> numbers) {
+            Console.WriteLine("Search a number by name: ");
+            string input = Console.ReadLine();
+            List<Nummer> foundNummers = numbers.Where(number => number.name.ToLower().StartsWith(input.ToLower(), StringComparison.OrdinalIgnoreCase)).ToList();
+
+            if (foundNummers.Count < 1)
+            {
+                Console.WriteLine("No numbers found please try again");
+                return searchNumberByName(numbers);
+            }
+
+            return handleNumberSearching(foundNummers);
+
+        }
+
+        /**
+         * @List<Nummer> list of all nummers
+         * 
+         * Method that searches nummers by nummer genre
+         **/ 
+        public List<Nummer> searchNumberByGenre(List<Nummer> numbers)
+        {
+            Console.WriteLine("Search a number by genre: ");
+            string input = Console.ReadLine();
+            List<Nummer> foundNummers = numbers
+                   .Where(number => Enum.GetName(typeof(Genre), number.genre)
+                   .ToLower().StartsWith(input.ToLower()))
+                   .ToList();
+
+            if (foundNummers.Count < 1)
+            {
+                Console.WriteLine("No numbers found please try again");
+                return searchNumberByGenre(numbers);
+            }
+
+            return handleNumberSearching(foundNummers);
+
+        }
+        /**
+         * @List<Nummer> list of all found nummers
+         * 
+         * Method that handles searching
+         * */
+        private List<Nummer> handleNumberSearching(List<Nummer> numbers)
+        {
+            
+            if (numbers.Count > 1)
+            {
+                Console.WriteLine("Found Multiple Numbers please select one");
+                return selectMultipleNumbers(numbers);
+            }
+            Console.WriteLine(numbers.First().name);
+            return numbers;
+        }
+
+        /**
+         * @List<Nummer> list of already filterted nummers
+         * 
+         * Method that gives you a choice between 2 nummers
+         * */
+        private List<Nummer> selectMultipleNumbers(List<Nummer> numbers) {
+            Console.WriteLine("Multiple numbers found please select one");
+            // show all nummers
+            foreach (Nummer number in numbers)
+            {
+                Console.Write(number.name + " , ");
+            }
+            //user input for selected nummer
+            string input = Console.ReadLine();
+            // get all nummers that start with certain chars
+            List<Nummer> foundNummers = numbers.Where(number => number.name.ToLower().StartsWith(input.ToLower(), StringComparison.OrdinalIgnoreCase)).ToList();
+
+            //check if count is 1
+            if (foundNummers.Count() == 1)
+            {
+                Console.WriteLine(foundNummers.First().name);
+                return foundNummers;
+            }
+            Console.WriteLine("error try again");
+            return selectMultipleNumbers(numbers);
         }
     
     }

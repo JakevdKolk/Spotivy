@@ -15,10 +15,10 @@ public enum Genre
 
 public class Nummer
 {
-    public string name;
+    public string name { get; set; }
     private string artiest = "test"; // Changed to private for consistency
     private double lengte;
-    private Genre genre;
+    public Genre genre;
         
     public Nummer(string name, double length, Genre genre)
     {
