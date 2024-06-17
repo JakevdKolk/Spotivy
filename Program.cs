@@ -5,8 +5,13 @@ namespace Spotivy
     {
         static void Main(string[] args)
         {
-            Nummer Nummer = new Nummer("funny cat song", 30.5, Genre.country);
-      
+            Nummer initNumber = new Nummer("funny cat song", 30.5, Genre.classical);
+            List<Nummer> nummers = initNumber.InitNumbers();
+            nummers.Add(initNumber);
+         /* foreach(Nummer nummer in nummers)
+            {
+                Console.WriteLine(nummer.name);
+            }*/
             //Create head user
             User user = new User("player");
             //Create list of test users
