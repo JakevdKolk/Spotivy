@@ -52,20 +52,19 @@ namespace Spotivy.Users
             List<User> foundUsers = users
                    .Where(user => user.UserName.ToLower().StartsWith(userName.ToLower(), StringComparison.OrdinalIgnoreCase))
                    .ToList();
-            // check if count is above 1
-            if(foundUsers.Count() > 0) {
-                // check if count is 2 or higher
-                if (foundUsers.Count() >= 2)
-                {
-                    foundUsers = selectMultipleUser(foundUsers);
-                }
-                Console.WriteLine("Found user " + foundUsers.First().UserName);
+            if(foundUsers.Count() < 1) {
+                Console.WriteLine("error no user found try again");
 
-                return foundUsers.First();
+                return searchUser(Console.ReadLine(), users);
             }
-            Console.WriteLine("error no user found try again");
-            return searchUser(Console.ReadLine(), users);
-            
+
+            if(foundUsers.Count() > 1) {
+
+                foundUsers = selectMultipleUser(foundUsers);
+
+            }
+            return foundUsers.First();
+                     
         }
 
         /**
@@ -101,18 +100,8 @@ namespace Spotivy.Users
             Console.WriteLine("Search a number by name: ");
             string input = Console.ReadLine();
             List<Nummer> foundNummers = numbers.Where(number => number.name.ToLower().StartsWith(input.ToLower(), StringComparison.OrdinalIgnoreCase)).ToList();
-            if (foundNummers.Count < 1)
-            {
-                Console.WriteLine("No Numbers found");
-                return searchNumberByName(numbers);
-            }
 
-            else if (foundNummers.Count > 1)
-            {
-                Console.WriteLine("Found Multiple Numbers please select one");
-                //return multiple method
-            }
-            return foundNummers;
+            return handleNumberSearching(foundNummers);
 
         }
 
@@ -120,20 +109,32 @@ namespace Spotivy.Users
         {
             Console.WriteLine("Search a number by genre: ");
             string input = Console.ReadLine();
-            List<Nummer> foundNummers = numbers.Where(number => number.name.ToLower().StartsWith(input.ToLower(), StringComparison.OrdinalIgnoreCase)).ToList();
-            if(foundNummers.Count < 1)
+            List<Nummer> foundNummers = numbers
+                   .Where(number => Enum.GetName(typeof(Genre), number.genre)
+                   .ToLower().StartsWith(input.ToLower()))
+                   .ToList();
+            
+            return handleNumberSearching(foundNummers);
+
+        }
+
+        private List<Nummer> handleNumberSearching(List<Nummer> numbers)
+        {
+
+            if (numbers.Count < 1)
             {
-                Console.WriteLine("No Numbers found");
+                Console.WriteLine("No numbers found please try again");
                 return searchNumberByGenre(numbers);
             }
 
-            else if (foundNummers.Count > 1)
+
+            else if (numbers.Count > 1)
             {
                 Console.WriteLine("Found Multiple Numbers please select one");
-                return selectMultipleNumbers(foundNummers);
+                return selectMultipleNumbers(numbers);
             }
-            return foundNummers;
-
+            Console.WriteLine(numbers.First().name);
+            return numbers;
         }
 
         private List<Nummer> selectMultipleNumbers(List<Nummer> numbers) {
@@ -151,6 +152,7 @@ namespace Spotivy.Users
             //check if count is 1
             if (foundNummers.Count() == 1)
             {
+                Console.WriteLine(foundNummers.First().name);
                 return foundNummers;
             }
             Console.WriteLine("error try again");
