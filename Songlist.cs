@@ -23,12 +23,12 @@ namespace Spotivy.Users
             int count = 0;
             Nummer firstNummer = nummers.First();
 
-            Console.WriteLine("You are listening to: " + firstNummer.name + "Number length: " + firstNummer.lengte + "Genre is: " + firstNummer.genre);
+            Console.WriteLine("You are listening to: " + firstNummer.name + " Number length: " + firstNummer.lengte + " Genre is: " + firstNummer.genre);
 
         }
         public void play(Nummer nummer)
         {
-            Console.WriteLine("You are listening to: " + nummer.name + "Number length: " + nummer.lengte + "Genre is: " + nummer.genre);
+            Console.WriteLine("You are listening to: " + nummer.name + " Number length: " + nummer.lengte + " Genre is: " + nummer.genre);
         }
 
         public void shuffle()

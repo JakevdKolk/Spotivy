@@ -21,6 +21,9 @@ namespace Spotivy
             // Shuffle the songs
             songs.shuffle();
 
+            songs.playInList();
+            songs.play(nummers.First());
+
             // Create the main user
             User user = new User("player");
 
