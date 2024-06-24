@@ -1,29 +1,40 @@
 ﻿using Spotivy.Users;
+
 namespace Spotivy
 {
     internal class Program
     {
         static void Main(string[] args)
         {
+            // Create a new song list
+            Songlist songs = new Songlist("my songlist");
+
+            // Create a new number
             Nummer initNumber = new Nummer("funny cat song", 30.5, Genre.classical);
+
+            // Initialize the list of numbers
             List<Nummer> nummers = initNumber.InitNumbers();
             nummers.Add(initNumber);
-       
-            //Create head user
+
+            // Assign the initialized list to the song list
+            songs.add(initNumber);
+            songs.add(nummers.First());
+            songs.add(nummers.Last());
+            // Shuffle the songs
+            songs.shuffle();
+
+            // Create the main user
             User user = new User("player");
-            //Create list of test users
-            
+
+            // Create a list of test users and add the main user to it
             List<User> users = user.initUsers();
             users.Add(user);
 
-           // user.searchUser(Console.ReadLine(),users );
+            // Search for numbers by genre and name
             user.searchNumberByGenre(nummers);
-            user.searchNumberByName(nummers);   
-            //loop trough all test users.
-           
+            user.searchNumberByName(nummers);
 
+            // Loop through all test users (implementation not shown)
         }
-
     }
-
 }
