@@ -17,9 +17,7 @@ namespace Spotivy
             nummers.Add(initNumber);
 
             // Assign the initialized list to the song list
-            songs.add(initNumber);
-            songs.add(nummers.First());
-            songs.add(nummers.Last());
+            songs.initSonglist(nummers);
             // Shuffle the songs
             songs.shuffle();
 
@@ -34,7 +32,6 @@ namespace Spotivy
             user.searchNumberByGenre(nummers);
             user.searchNumberByName(nummers);
 
-            // Loop through all test users (implementation not shown)
         }
     }
 }

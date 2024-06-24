@@ -17,7 +17,7 @@ public class Nummer
 {
     public string name { get; set; }
     private string artiest = "test"; // Changed to private for consistency
-    private double lengte;
+    public double lengte;
     public Genre genre;
         
     public Nummer(string name, double length, Genre genre)
