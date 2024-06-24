@@ -9,22 +9,9 @@ namespace Spotivy
             List<Nummer> nummers = initNumber.InitNumbers();
             nummers.Add(initNumber);
 
-            Artiest Artiest = new Artiest("Funny Cat Man", "Funny Cat Song");
-            List<Artiest> artists = Artiest.InitArtists();
+            Artiest Artiest = new Artiest("Funny Cat Man", initNumber);
+            List<Artiest> artists = Artiest.InitArtists(nummers);
             artists.Add(Artiest);
-
-            foreach (Artiest artist in artists) {
-                Console.WriteLine(artist.name);
-                foreach(string song in artist.song)
-                {
-                    Console.WriteLine(song);
-                }
-            }
-         /* foreach(Nummer nummer in nummers)
-            {
-                Console.WriteLine(nummer.name);
-            }*/
-            //Create head user
             User user = new User("player");
             //Create list of test users
             
@@ -35,10 +22,16 @@ namespace Spotivy
             user.searchUser(Console.ReadLine(),users );
 
             //loop trough all test users.
-         /*   foreach (User username in users)
+            foreach (Artiest artist in artists)
             {
-                Console.WriteLine(username.UserName);
-            }*/
+                Console.Write(artist.name + " - ");
+                foreach(Nummer nummer in artist.songs)
+                {
+
+                    Console.WriteLine(nummer.name);
+                }
+            
+            }
 
         }
 
