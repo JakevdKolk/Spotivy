@@ -7,7 +7,7 @@ namespace Spotivy.Users
     {
         public string playlist_name { get; set; }
         public List<Nummer> nummers { get; set; } = new List<Nummer>();
-
+        protected bool isPlaying { get; set; }
         public Songlist(string playlist_name)
         {
             this.playlist_name = playlist_name;
@@ -20,14 +20,28 @@ namespace Spotivy.Users
             }
         }
         public void playInList() {
-            Nummer firstNummer = nummers.First();
+            isPlaying = true;
+            foreach(Nummer nummer in nummers)
+            {
+                Console.WriteLine("You are listening to: " + nummer.name + " Number length: " + nummer.lengte + " Genre is: " + nummer.genre);
 
-            Console.WriteLine("You are listening to: " + firstNummer.name + " Number length: " + firstNummer.lengte + " Genre is: " + firstNummer.genre);
+                Console.WriteLine("Do you want to listen to the next number");
+                Console.WriteLine("1 yes/2 no");
+                string input = Console.ReadLine();
+                if(input != "1")
+                {
+                    Console.WriteLine("thank you for listining");
+                    break;
+                }
+                Console.WriteLine("playing next song");
+            }
+
 
         }
         // needs to get moved to the client class
         public void play(Nummer nummer)
         {
+            isPlaying = true;
             Console.WriteLine("You are listening to: " + nummer.name + " Number length: " + nummer.lengte + " Genre is: " + nummer.genre);
         }
 
@@ -48,10 +62,19 @@ namespace Spotivy.Users
             return nummers;
         }
 
-        public Nummer skip()
+        public void skip()
         {
             // Implementation for skip
-            return null;
+            
+        }
+        /* can always make this a return statement if needed */
+        public void stop(Nummer nummer)
+        {
+            if (isPlaying) {
+                isPlaying=false;
+                Console.WriteLine("You stopped the number: " + nummer.name + " number length: " + nummer.lengte + " genre is: " + nummer.genre);
+            }
+            Console.WriteLine("number isn't playing");
         }
 
         /* Temporary, needs to be moved to the playlist class */
@@ -59,9 +82,9 @@ namespace Spotivy.Users
         {
             nummers.Add(nummer);
         }
-        public List<Nummer> delete(Nummer nummer)
+        public void remove(Nummer nummer)
         {
-                
+           nummers.Remove(nummer);
         }
     }
 }
