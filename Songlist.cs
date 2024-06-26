@@ -31,7 +31,7 @@ namespace Spotivy.Users
             Console.WriteLine("You are listening to: " + nummer.name + " Number length: " + nummer.lengte + " Genre is: " + nummer.genre);
         }
 
-        public void shuffle()
+        public List<Nummer> shuffle()
         {
             Random rng = new Random();
             int n = nummers.Count;
@@ -44,10 +44,8 @@ namespace Spotivy.Users
                 nummers[n] = value;
             }
 
-            foreach(Nummer nummers in nummers)
-            {
-                Console.WriteLine(nummers.name);
-            }
+        
+            return nummers;
         }
 
         public Nummer skip()
@@ -60,6 +58,10 @@ namespace Spotivy.Users
         public void add(Nummer nummer)
         {
             nummers.Add(nummer);
+        }
+        public List<Nummer> delete(Nummer nummer)
+        {
+                
         }
     }
 }
