@@ -19,10 +19,11 @@ namespace Spotivy
             // Assign the initialized list to the song list
             songs.initSonglist(nummers);
             // Shuffle the songs
-            songs.shuffle();
-
+            songs.shuffle();    
+            songs.stop(nummers.First());
             songs.playInList();
             songs.play(nummers.First());
+            songs.stop(nummers.First());
 
             // Create the main user
             User user = new User("player");
