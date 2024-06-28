@@ -85,14 +85,6 @@ namespace Spotivy
             Console.WriteLine("number isn't playing");
         }
 
-        /* Temporary, needs to be moved to the playlist class */
-        public void add(Nummer nummer)
-        {
-            nummers.Add(nummer);
-        }
-        public void remove(Nummer nummer)
-        {
-           nummers.Remove(nummer);
-        }
+
     }
 }
