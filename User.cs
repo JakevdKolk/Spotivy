@@ -22,6 +22,14 @@ namespace Spotivy
 
         }
 
+        public void showPlaylists()
+        {
+            foreach (Playlist playlist in playlists) {
+                Console.WriteLine("playlist:" + playlist.playlist_name);
+            }
+
+        }
+
 
         /**
          * 

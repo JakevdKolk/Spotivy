@@ -24,10 +24,17 @@ namespace Spotivy
             Console.WriteLine("added friend:" + user.UserName);
             return friends;
         }
-        public List<User> deleteFriend(User user)
+        public List<User> deleteFriend()
         {
-            friends.Remove(user);
-            Console.WriteLine("removed friend:" + user.UserName);
+            foreach (User user in friends)
+            {
+                Console.WriteLine("1 if you want to delete: " + user.UserName);
+                if(Console.ReadLine() == "1")
+                {
+                    friends.Remove(user);
+                    break;
+                }
+            }
             return friends;
         }
 
