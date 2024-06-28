@@ -13,7 +13,7 @@ namespace Spotivy
             Playlist playlist = new Playlist("a playlist");
 
             // Create a new number
-            Nummer initNumber = new Nummer("funny cat song", 30.5, Genre.classical);
+            Nummer initNumber = new Nummer("funny cat song", 30.5, Genre.classical, "hahahhaha");
 
             // Initialize the list of numbers
             List<Nummer> nummers = initNumber.InitNumbers();
