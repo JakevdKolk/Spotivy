@@ -16,18 +16,23 @@ public enum Genre
 public class Nummer
 {
     public string name { get; set; }     
-    private string artiest = "test"; // Changed to private for consistency
+    private string artiest; // Changed to private for consistency
     public double lengte;
     public Genre genre;
         
-    public Nummer(string name, double length, Genre genre)
+    public Nummer(string name, double length, Genre genre, string arrtist)
     {
         this.name = name;
         this.lengte = length;
         this.genre = genre;
+        this.artiest = arrtist;
 
     }
 
+    public string getArtist()
+    {
+        return artiest;
+    }
 
     public List<Nummer> InitNumbers()
     {
@@ -40,6 +45,9 @@ public class Nummer
         // Create genres corresponding to each song
         Genre[] genres = new Genre[] { Genre.blues, Genre.jazz, Genre.country, Genre.metal, Genre.pop, Genre.hiphop, Genre.gypsyJazz, Genre.blues, Genre.classical, Genre.pop };
 
+        //artist
+        string[] artist = new string[] { "artist 1", "M2", "3", "In5 end", "4", "5", "5 swing", "7", "Fur 6", "8" };
+
         // Create a list of Nummer
         List<Nummer> numbers = new List<Nummer>();
 
@@ -47,7 +55,7 @@ public class Nummer
         for (int i = 0; i < names.Length; i++)
         {
             // Create a new Nummer and add to the list
-            numbers.Add(new Nummer(names[i], lengths[i], genres[i]));
+            numbers.Add(new Nummer(names[i], lengths[i], genres[i], artist[i]));
         }
 
         // Return the new list of numbers
