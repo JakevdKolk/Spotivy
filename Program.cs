@@ -6,8 +6,11 @@ namespace Spotivy
     {
         static void Main(string[] args)
         {
+            // Create the main user
+            User user = new User("player");
             // Create a new song list
             Songlist songs = new Songlist("my songlist");
+            Playlist playlist = new Playlist("a playlist", user);
 
             // Create a new number
             Nummer initNumber = new Nummer("funny cat song", 30.5, Genre.classical);
@@ -25,8 +28,7 @@ namespace Spotivy
             songs.play(nummers.First());
             songs.stop(nummers.First());
 
-            // Create the main user
-            User user = new User("player");
+
 
             // Create a list of test users and add the main user to it
             List<User> users = user.initUsers();

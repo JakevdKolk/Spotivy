@@ -9,8 +9,11 @@ namespace Spotivy
 {
     class Playlist : Songlist {
 
-        public Playlist(string albumName) : base(albumName)
+        User user { get; set; }
+
+        public Playlist(string albumName, User user) : base(albumName)
         {
+            this.user = user;
             // constructor of playlist class
         }
 
