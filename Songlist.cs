@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Spotivy.Users
+namespace Spotivy
 {
     internal class Songlist
     {
