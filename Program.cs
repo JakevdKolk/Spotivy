@@ -28,10 +28,16 @@ namespace Spotivy
             songs.play(nummers.First());
             songs.stop(nummers.First());
 
-
+            
 
             // Create a list of test users and add the main user to it
             List<User> users = user.initUsers();
+            Friends friend = new Friends();
+            friend.addFriend(user);
+            friend.addFriend(users.First());
+            friend.deleteFriend(user);
+            friend.showFriendList();
+
             users.Add(user);
 
             // Search for numbers by genre and name

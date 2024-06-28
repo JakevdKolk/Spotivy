@@ -10,12 +10,18 @@ namespace Spotivy
     class Friends
     {
         List<User> friends { get; set; }
-
+        List<Playlist> playlists { get; set; }
         public Friends() {
+            friends = new List<User>();
+            playlists = new List<Playlist>();
         }
 
         public List<User> addFriend(User user) {
-        
+
+            if (user == null)
+            {
+                return friends;
+            }
              friends.Add(user);
             Console.WriteLine("added friend:" + user.UserName);
             return friends;
