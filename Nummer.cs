@@ -15,7 +15,7 @@ public enum Genre
 
 public class Nummer
 {
-    public string name { get; set; }
+    public string name { get; set; }     
     private string artiest = "test"; // Changed to private for consistency
     public double lengte;
     public Genre genre;
