@@ -1,4 +1,4 @@
-﻿using Spotivy.Users;
+﻿using Spotivy;
 using System;
 
 public enum Genre

@@ -1,11 +1,11 @@
-﻿using Spotivy.Users;
-
+﻿
 namespace Spotivy
 {
     internal class Program
     {
         static void Main(string[] args)
         {
+            Friends friends = new Friends();
             // Create a new song list
             Songlist songs = new Songlist("my songlist");
 
