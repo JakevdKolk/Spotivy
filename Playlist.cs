@@ -26,6 +26,13 @@ namespace Spotivy
         {
             nummers.Remove(nummer);
         }
+        public User showUserStatsFromPlayer()
+        {
+            Console.WriteLine("username: " + user.UserName);
+
+            //idk you might want to do something with the user i guess
+            return user;
+        }
 
     }
 }
