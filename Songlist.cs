@@ -8,9 +8,12 @@ namespace Spotivy.Users
         public string playlist_name { get; set; }
         public List<Nummer> nummers { get; set; } = new List<Nummer>();
         protected bool isPlaying { get; set; }
+
+        protected int indexPlaying { get; set; }
         public Songlist(string playlist_name)
         {
             this.playlist_name = playlist_name;
+            this.indexPlaying = 0;
         }
         public void initSonglist(List<Nummer> nummertjes)
         {
@@ -65,7 +68,12 @@ namespace Spotivy.Users
         public void skip()
         {
             // Implementation for skip
-            
+            indexPlaying = indexPlaying + 1;
+            Nummer nummer = nummers[indexPlaying];
+
+            Console.WriteLine("You skipped now playing the number: " + nummer.name + " number length: " + nummer.lengte + " genre is: " + nummer.genre);
+
+
         }
         /* can always make this a return statement if needed */
         public void stop(Nummer nummer)
