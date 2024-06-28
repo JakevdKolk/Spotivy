@@ -11,12 +11,17 @@ namespace Spotivy
     {
         
         public string UserName { get; set; }
-            
+        public List<Playlist> playlists { get; set; }
+
+
         public User(string userName)
         {
             // Set username
             UserName = userName;
+            playlists = new List<Playlist>();
+
         }
+
 
         /**
          * 
@@ -36,6 +41,12 @@ namespace Spotivy
             }
             //return the new users
             return users;
+        }
+
+        public void addPlaylist( Playlist playlist)
+        {
+            if (playlist == null) { return; }
+            playlists.Add(playlist);
         }
 
         /**

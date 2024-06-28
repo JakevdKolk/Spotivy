@@ -9,11 +9,8 @@ namespace Spotivy
 {
     class Playlist : Songlist {
 
-        User user { get; set; }
-
-        public Playlist(string albumName, User user) : base(albumName)
+        public Playlist(string albumName) : base(albumName)
         {
-            this.user = user;
             // constructor of playlist class
         }
 
@@ -38,13 +35,7 @@ namespace Spotivy
             }
             return false;
         }
-        public User showUserStatsFromPlayer()
-        {
-            Console.WriteLine("username: " + user.UserName);
-
-            //idk you might want to do something with the user i guess
-            return user;
-        }
+    
         public void putAlbumIntoPlaylist(Album albumemtje)
         {
             List<Nummer> nummertjes = albumemtje.nummers;
@@ -55,5 +46,9 @@ namespace Spotivy
             }
 
         }
+
+    
+
+
     }
 }
