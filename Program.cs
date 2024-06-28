@@ -1,4 +1,4 @@
-﻿using Spotivy.Users;
+﻿using Spotivy;
 
 namespace Spotivy
 {
