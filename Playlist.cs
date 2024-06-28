@@ -24,7 +24,19 @@ namespace Spotivy
         }
         public void remove(Nummer nummer)
         {
+            if(checkEmpty()) return;
+
             nummers.Remove(nummer);
+        }
+        public bool checkEmpty()
+        {
+            bool isEmpty = !nummers.Any();
+            if(isEmpty)
+            {
+                Console.WriteLine("GRRRRRRRR list is empty");
+                return true;
+            }
+            return false;
         }
         public User showUserStatsFromPlayer()
         {
