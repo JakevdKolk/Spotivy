@@ -10,13 +10,19 @@ namespace Spotivy
     class Friends
     {
         List<User> friends { get; set; }
-
-        public Friends() {
+        public Friends()
+        {
+            friends = new List<User>();
         }
 
-        public List<User> addFriend(User user) {
-        
-             friends.Add(user);
+        public List<User> addFriend(User user)
+        {
+
+            if (user == null)
+            {
+                return friends;
+            }
+            friends.Add(user);
             Console.WriteLine("added friend:" + user.UserName);
             return friends;
         }
@@ -34,6 +40,7 @@ namespace Spotivy
                 Console.WriteLine(friend.UserName);
             }
         }
+
 
 
     }
