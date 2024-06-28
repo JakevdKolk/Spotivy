@@ -45,6 +45,15 @@ namespace Spotivy
             //idk you might want to do something with the user i guess
             return user;
         }
+        public void putAlbumIntoPlaylist(Album albumemtje)
+        {
+            List<Nummer> nummertjes = albumemtje.nummers;
+            //ik heb iets gevonden voor de album class!!!!!!
+            foreach(Nummer nummer in nummertjes)
+            {
+                nummers.Add(nummer);
+            }
 
+        }
     }
 }

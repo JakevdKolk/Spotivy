@@ -15,5 +15,7 @@ namespace Spotivy
         }
         // 😏😏😏😏😏😏😏😏😏😏
         // class exists for future expasnsion futher in development
+
+       
     }
 }
